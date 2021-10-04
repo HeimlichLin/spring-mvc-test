@@ -1,0 +1,3 @@
+0:0:0:0:0:0:0:1 - - [21/Oct/2020:09:11:12 +0800] "GET /spring-mvc-test HTTP/1.1" 302 - http-bio-8082-exec-1 0
+0:0:0:0:0:0:0:1 - - [21/Oct/2020:09:11:28 +0800] "GET /spring-mvc-test/ HTTP/1.1" 404 1041 http-bio-8082-exec-2 15339
+0:0:0:0:0:0:0:1 - - [21/Oct/2020:09:11:29 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8082-exec-3 0

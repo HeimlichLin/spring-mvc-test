@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context>
+
+    <!-- Default set of monitored resources -->
+	<WatchedResource>WEB-INF/web.xml</WatchedResource>
+
+	<Resource name="jdbc/testdb" auth="Container"
+		type="javax.sql.DataSource" maxTotal="100" maxIdle="30"
+		maxWaitMillis="10000" username="${jdbc.username}"
+		password="${jdbc.password}" driverClassName="${jdbc.driverClassName}"
+		url="j${jdbc.url}" maxActive="20" />
+
+</Context>
+
+<!-- 私有的JNDI有三种方式可以配置： -->
+<!-- 1、可以直接在server.xml里面的 -->
+<!-- <Host> -->
+<!-- 	节点下添加如下配置： -->
+<!-- 	<Context path="/test_tomcat6_jndi"> -->
+<!-- 		<Resource name="jdbc/test" auth="Container" -->
+<!-- 			type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver" -->
+<!-- 			url="jdbc:mysql://127.0.0.1/test" username="root" password="root" -->
+<!-- 			maxActive="20" maxIdle="10" maxWait="-1" /> -->
+<!-- 	</Context> -->
+<!-- 这样就可以直接在程序中通过context.lookup("java:comp/env/jdbc/test")访问了,需要注意的是path="/test_tomcat6_jndi"，这个名字必须和你的项目名称相同，而且不能少了那个斜杠，而且你的项目是通过拷贝文件夹到webapps下面的方式进行的部署。 -->
+
+<!-- 2、 也可以在conf/context.xml里面增加如下配置： -->
+<!-- <Resource name="jdbc/test" auth="Container" -->
+<!-- 	type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver" -->
+<!-- 	url="jdbc:mysql://127.0.0.1/test" username="root" password="root" -->
+<!-- 	maxActive="20" maxIdle="10" maxWait="-1" /> -->
+<!-- 这样就可以直接在程序中通过context.lookup("java:comp/env/jdbc/test")访问了 -->
+
+<!-- 3、还可以在项目的WebRoot下面的META-INF文件夹下面创建context.xml文件，再在context.xml文件里面写上  -->
+<!-- <?xml version="1.0" encoding="UTF-8"?> -->
+<!-- 	<Context> -->
+<!-- 		<Resource name="jdbc/test" auth="Container" -->
+<!-- 			type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver" -->
+<!-- 			url="jdbc:mysql://127.0.0.1/test" username="root" password="root" -->
+<!-- 			maxActive="20" maxIdle="10" maxWait="-1" /> -->
+<!-- 	</Context> -->
+<!-- 这样就可以直接在程序中通过context.lookup("java:comp/env/jdbc/test")访问了 -->
